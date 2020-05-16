@@ -320,7 +320,7 @@ public class RNSoundModule extends ReactContextBaseJavaModule implements AudioMa
       }
     }
   }
-	
+  
   @Override
   public void onCatalystInstanceDestroy() {
     java.util.Iterator it = this.playerPool.entrySet().iterator();
@@ -375,10 +375,10 @@ public class RNSoundModule extends ReactContextBaseJavaModule implements AudioMa
 
   @ReactMethod
   public void setSpeed(final Double key, final Float speed) {
-	if (android.os.Build.VERSION.SDK_INT < 23) {
-	  Log.w("RNSoundModule", "setSpeed ignored due to sdk limit");
-	  return;
-	}
+  if (android.os.Build.VERSION.SDK_INT < 23) {
+    Log.w("RNSoundModule", "setSpeed ignored due to sdk limit");
+    return;
+  }
 
     MediaPlayer player = this.playerPool.get(key);
     if (player != null) {
@@ -412,9 +412,9 @@ public class RNSoundModule extends ReactContextBaseJavaModule implements AudioMa
       player.setAudioStreamType(AudioManager.STREAM_MUSIC);
       AudioManager audioManager = (AudioManager)this.context.getSystemService(this.context.AUDIO_SERVICE);
       if(speaker){
-        audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
-      }else{
         audioManager.setMode(AudioManager.MODE_NORMAL);
+      }else{
+        audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
       }
       audioManager.setSpeakerphoneOn(speaker);
     }
